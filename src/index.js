@@ -3,14 +3,16 @@ const bodyParser = require('body-parser')
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express')
 const { makeExecutableSchema } = require('graphql-tools')
 const scrappers = require('./scrappers')
-// Some fake data
-const newsFeed = [
-  { title: 'Plouf', url: 'http://somesuper.url' },
-  { title: 'Abracadabra', url: 'http://some.url' }
-]
+console.log(scrappers)
 
 const typeDefs = `
-  type Query { newsFeed: [News] }
+  type Query { newsFeed: [NewsBySource] }
+
+  type NewsBySource {
+    source: String
+    news: [News]
+  }
+
   type News { title: String
     link: String
     image: String
@@ -18,7 +20,18 @@ const typeDefs = `
 `
 
 const resolvers = {
-  Query: { newsFeed: () => scrappers.coinTelegraph() }
+  Query: {
+    newsFeed: () =>
+      Promise.all([
+        scrappers.ccn(),
+        scrappers.coinTelegraph(),
+        scrappers.coinDesk()
+      ]).then(([ccn, coinTelegraph, coinDesk]) => [
+        { source: 'ccn', news: ccn },
+        { source: 'coinTelegraph', news: coinTelegraph },
+        { source: 'coinDesk', news: coinDesk }
+      ])
+  }
 }
 
 const schema = makeExecutableSchema({
