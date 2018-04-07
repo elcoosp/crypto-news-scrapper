@@ -3,6 +3,8 @@ const bodyParser = require('body-parser')
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express')
 const { makeExecutableSchema } = require('graphql-tools')
 const scrappers = require('./scrappers')
+
+const cors = require('cors')
 console.log(scrappers)
 
 const typeDefs = `
@@ -42,6 +44,7 @@ const schema = makeExecutableSchema({
 const app = express()
 
 app
+  .use(cors())
   .use('/graphql', bodyParser.json(), graphqlExpress({ schema }))
   .use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }))
   .listen(3000, () =>
