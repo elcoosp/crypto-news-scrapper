@@ -1,7 +1,7 @@
 import React from 'react'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
-import { ErrorMessage, Loader, NewsListBySource } from '../components'
+import { ErrorMessage, Loader, NewsList } from '../components'
 
 const GET_NEWS_FFED = gql`
   {
@@ -26,9 +26,7 @@ export default () => (
         ) : loading ? (
           <Loader loadingWhat="news feed" />
         ) : data ? (
-          data.newsFeed.map(feed => (
-            <NewsListBySource key={feed.source} {...feed} />
-          ))
+          data.newsFeed.map(list => <NewsList key={list.source} {...list} />)
         ) : null
       }
     </Query>
