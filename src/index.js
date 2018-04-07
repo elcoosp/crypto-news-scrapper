@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express')
 const { makeExecutableSchema } = require('graphql-tools')
-
+const scrappers = require('./scrappers')
 // Some fake data
 const newsFeed = [
   { title: 'Plouf', url: 'http://somesuper.url' },
@@ -11,11 +11,14 @@ const newsFeed = [
 
 const typeDefs = `
   type Query { newsFeed: [News] }
-  type News { title: String, url: String }
+  type News { title: String
+    link: String
+    image: String
+    excerpt: String }
 `
 
 const resolvers = {
-  Query: { newsFeed: () => newsFeed }
+  Query: { newsFeed: () => scrappers.coinTelegraph() }
 }
 
 const schema = makeExecutableSchema({

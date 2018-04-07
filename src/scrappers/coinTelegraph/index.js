@@ -1,5 +1,4 @@
 const Xray = require('x-ray')
-const moment = require('moment')
 
 const x = Xray({
   filters: {
