@@ -1,7 +1,1 @@
-const coinTelegraph = require('./coinTelegraph')
-const ccn = require('./ccn')
-
-module.exports = {
-  coinTelegraph,
-  ccn
-}
+module.exports = require('export-dir')(__dirname)
