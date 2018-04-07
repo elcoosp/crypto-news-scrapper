@@ -4,7 +4,8 @@ import registerServiceWorker from './registerServiceWorker'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
 import styledNormalize from 'styled-normalize'
-import { injectGlobal } from 'styled-components'
+import { injectGlobal, ThemeProvider } from 'styled-components'
+import theme from './theme'
 import App from './App'
 
 injectGlobal`
@@ -19,7 +20,9 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
   </ApolloProvider>,
   document.getElementById('root')
 )
