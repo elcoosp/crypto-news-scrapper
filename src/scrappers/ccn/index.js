@@ -1,7 +1,7 @@
 const promiseScrap = require('../config')
 
 const ccn = () =>
-  promiseScrap('https://www.ccn.com/', '.post', [
+  promiseScrap('https://www.ccn.com/', '.posts-row > .post', [
     {
       title: '.entry-title',
       link: '.entry-title > a@href',

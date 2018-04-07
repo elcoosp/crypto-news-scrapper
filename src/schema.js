@@ -24,9 +24,9 @@ const resolvers = {
         scrappers.coinTelegraph(),
         scrappers.coinDesk()
       ]).then(([ccn, coinTelegraph, coinDesk]) => [
-        { source: 'ccn', news: ccn },
-        { source: 'coinTelegraph', news: coinTelegraph },
-        { source: 'coinDesk', news: coinDesk }
+        { source: 'CCN', news: ccn },
+        { source: 'Coin Telegraph', news: coinTelegraph },
+        { source: 'Coin Desk', news: coinDesk }
       ])
   }
 }
