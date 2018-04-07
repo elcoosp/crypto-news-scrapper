@@ -1,5 +1,5 @@
 const coinTelegraph = require('./index.js')
-test('coinTelegraph scrapper should return an array of news object with title, link and image keys', () => {
+test('coinTelegraph scrapper should return an array of news object with title, link, excerpt and image keys', () => {
   return coinTelegraph().then(data =>
     expect(data).toContainEqual(
       expect.objectContaining({
