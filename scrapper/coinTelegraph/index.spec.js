@@ -5,7 +5,8 @@ test('coinTelegraph scrapper should return an array of news object with title, l
       expect.objectContaining({
         title: expect.any(String),
         link: expect.stringContaining('https://cointelegraph.com'),
-        image: expect.stringContaining('https://images.cointelegraph.com/')
+        image: expect.stringContaining('https://images.cointelegraph.com/'),
+        excerpt: expect.any(String)
       })
     )
   )

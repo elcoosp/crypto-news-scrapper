@@ -1,7 +1,10 @@
 const Xray = require('x-ray')
+const moment = require('moment')
+
 const x = Xray({
   filters: {
-    getfirstImage: data => data.split(' 1x')[0]
+    trim: d => d.trim(),
+    getfirstImage: d => d.split(' 1x')[0]
   }
 })
 
@@ -11,7 +14,8 @@ const coinTelegraph = () =>
       {
         title: '.postTitle',
         link: 'a@href',
-        image: '.image>a>img.thumb@srcset | getfirstImage'
+        image: '.image > a > img.thumb@srcset | getfirstImage',
+        excerpt: '.image > a > p.lead | trim'
       }
     ])((e, data) => (e ? reject(e) : resolve(data)))
   )
