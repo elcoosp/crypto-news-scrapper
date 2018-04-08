@@ -11,7 +11,7 @@ import App from './App'
 injectGlobal`
 ${styledNormalize}
 :root {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Exo', sans-serif;
 }
 `
 const client = new ApolloClient({
