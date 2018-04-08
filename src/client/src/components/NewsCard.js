@@ -16,8 +16,11 @@ const NewsCard = styled.li`
   border-radius: ${T('radius.medium')};
   box-shadow: ${T('shadow.small')};
   transition: ${T('transition.medium')};
+  border: 1px solid ${T('palette.black')};
 
   :hover {
+    border: 1px solid white;
+
     box-shadow: ${T('shadow.medium')};
     transition: ${T('transition.medium')};
   }
@@ -30,7 +33,7 @@ const Anchor = styled.a`
 
 const Hero = styled.h2`
   margin: 0;
-  height: 120px;
+  height: 140px;
   ${gradientBg('palette.black')};
   color: white;
   padding: ${T('spacing.medium')};
@@ -45,8 +48,8 @@ const Title = styled.span`
 
   background-image: linear-gradient(
     to top left,
-    rgba(255, 255, 255, 0.8),
-    rgba(255, 255, 255, 0.3)
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.4)
   );
   color: ${T('palette.black')};
   border-bottom: 1px solid transparent;
@@ -59,7 +62,7 @@ const Title = styled.span`
 `
 
 const Excerpt = styled.p`
-  padding: ${T('spacing.small')};
+  padding: ${T('spacing.medium')};
 `
 
 export default ({ title, link, image, excerpt }) => (
