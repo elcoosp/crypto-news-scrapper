@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import NewsCard from './NewsCard'
-import { T, gradientBg } from '../theme'
+import { T, gradientBg, fadeIn } from '../theme'
 import StyledSpan from './StyledSpan'
 
 const NewsList = styled.section`
@@ -26,6 +26,7 @@ const List = styled.ul`
   flex-wrap: wrap;
   justify-content: center;
   align-items: stretch;
+  animation: ${fadeIn} 0.3s;
 `
 export default ({ source, news }) => {
   return (

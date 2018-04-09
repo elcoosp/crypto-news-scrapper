@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { T, gradientBg } from '../theme'
+import { T } from '../theme'
 
 export default styled.span`
   padding: 0px ${T('spacing.small')};

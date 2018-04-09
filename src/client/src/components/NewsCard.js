@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { T, gradientBg } from '../theme'
+import { T, gradientBg, fadeIn } from '../theme'
 import StyledSpan from './StyledSpan'
 const NewsCard = styled.li`
   list-style: none;
@@ -18,7 +18,8 @@ const NewsCard = styled.li`
   box-shadow: ${T('shadow.small')};
   transition: ${T('transition.medium')};
   border: 1px solid ${T('palette.black')};
-
+  opacity: 0;
+  animation: ${fadeIn} 0.3s ease-in-out 0.2s forwards;
   :hover {
     border: 1px solid white;
 

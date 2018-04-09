@@ -1,5 +1,5 @@
 import { path } from 'ramda'
-import { css } from 'styled-components'
+import { css, keyframes } from 'styled-components'
 import { adjustHue } from 'polished'
 
 export const T = stringPath => path(['theme', ...stringPath.split('.')])
@@ -11,6 +11,10 @@ export const gradientBg = color => css`
     ${p => adjustHue(20)(T(color)(p))}
   );
 `
+
+export const fadeIn = keyframes`
+from{opacity: 0}
+to{opacity: 1}`
 
 const palette = {
   black: '#2c3e50',
