@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { T, gradientBg } from '../theme'
+import StyledSpan from './StyledSpan'
 const NewsCard = styled.li`
   list-style: none;
   overflow: hidden;
@@ -43,24 +44,6 @@ const Hero = styled.h2`
   object-fit: cover;
 `
 
-const Title = styled.span`
-  padding: 0px ${T('spacing.small')};
-
-  background-image: linear-gradient(
-    to top left,
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0.4)
-  );
-  color: ${T('palette.black')};
-  border-bottom: 1px solid transparent;
-  transition: ${T('transition.medium')};
-
-  :hover {
-    border-bottom: 1px solid white;
-    transition: ${T('transition.medium')};
-  }
-`
-
 const Excerpt = styled.p`
   padding: ${T('spacing.medium')};
 `
@@ -69,7 +52,7 @@ export default ({ title, link, image, excerpt }) => (
   <NewsCard>
     <Anchor href={link} target="_blank">
       <Hero image={image}>
-        <Title>{title}</Title>
+        <StyledSpan>{title}</StyledSpan>
       </Hero>
       {excerpt && <Excerpt>{excerpt}</Excerpt>}
     </Anchor>
